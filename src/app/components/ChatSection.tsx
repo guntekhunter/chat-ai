@@ -1,5 +1,4 @@
 import { prisma } from "@/db";
-import React, { useEffect, useState } from "react";
 
 //@ts-ignore
 export default async function ChatSection() {

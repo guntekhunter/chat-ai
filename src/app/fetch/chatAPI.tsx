@@ -1,6 +1,7 @@
 const axios = require("axios");
 
-export const chatApi = async (chat: string) => {
+export const chatApi = async (input: string) => {
+  console.log(input);
   const options = {
     method: "POST",
     url: "https://openai80.p.rapidapi.com/chat/completions",
@@ -15,7 +16,7 @@ export const chatApi = async (chat: string) => {
       messages: [
         {
           role: "user",
-          content: chat,
+          content: input,
         },
       ],
     },
