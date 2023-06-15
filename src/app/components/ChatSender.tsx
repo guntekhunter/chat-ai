@@ -5,7 +5,7 @@ import { chatApi } from "../fetch/chatAPI";
 
 export default function ChatSender() {
   const [input, setInput] = useState<string>("");
-  const [answer, setAnswer] = useState<string>("");
+  const [answer, setAnswer] = useState<string[]>([]);
 
   const makeRequest = async () => {
     const res = await fetch("/api/message", {
@@ -23,7 +23,8 @@ export default function ChatSender() {
 
     const chat = await res.json();
     console.log(chat.choices[0].message.content);
-    setAnswer(chat.choices[0].message.content);
+    const chatData = chat.choices[0].message.content;
+    setAnswer([...answer, chatData]);
     console.log("res");
   };
   // const makeRequest = async () => {
@@ -31,8 +32,15 @@ export default function ChatSender() {
   //   console.log(res);
   // };
 
+  console.log(answer);
+
   return (
     <div>
+      <div>
+        {answer.map((item, key) => (
+          <p key={key}>{item}</p>
+        ))}
+      </div>
       <div>
         <input
           type="text"
@@ -42,7 +50,6 @@ export default function ChatSender() {
         />
         <button onClick={makeRequest}>Send</button>
       </div>
-      <p>{answer}</p>
     </div>
   );
 }
