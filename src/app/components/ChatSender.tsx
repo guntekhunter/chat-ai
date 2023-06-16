@@ -74,7 +74,7 @@ export default function ChatSender() {
         </div>
       </div>
       <div
-        className={`flex flex-col-reverse w-full md:px-[3rem] px-[1rem] pt-[1rem] md:pb-[5rem] pb-[3rem] bg-[#EFEAE2] overflow-hidden h-[85vh] overflow-y-scroll scrollbar-thin scrollbar-track-[#FFFFFF] scrollbar-thumb-[#9BCDD2]`}
+        className={`flex flex-col-reverse w-full md:px-[3rem] px-[1rem] pt-[1rem] md:pb-[5rem] pb-[4rem] bg-[#EFEAE2] overflow-hidden h-[85vh] overflow-y-scroll scrollbar-thin scrollbar-track-[#FFFFFF] scrollbar-thumb-[#9BCDD2]`}
       >
         <div className="w-full ">
           <div className="w-full h-full">
