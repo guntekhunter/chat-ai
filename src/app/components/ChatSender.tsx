@@ -15,6 +15,7 @@ export default function ChatSender() {
 
   const makeRequest = async () => {
     setQuestions([...questions, { chat: input, type: "questions" }]);
+    setInput("");
     setIsLoading(true);
     try {
       const res = await fetch("/api/message", {
@@ -58,23 +59,28 @@ export default function ChatSender() {
   }, [answer, questions]);
 
   return (
-    <div className="w-full h-[100vh] relative bg-white">
-      <div className="md:px-[3rem] px-[1rem] py-[1rem] shadow-md bg-white flex space-x-3">
+    <div className="w-full h-[100vh] relative bg-[#EFEAE2]">
+      <div className="md:px-[3rem] px-[1rem] py-[.5rem] shadow-md bg-[#F0F2F5] flex space-x-3">
         <Image src="./sona.svg" width={30} height={30} alt="" />
         <div>
           <p className="mt-[.2rem]">So'na</p>
-          <p className={`${isLoading ? "" : "hidden"}`}>Typing....</p>
+          <p className={`${isLoading ? "" : "hidden"} text-[.7rem]`}>
+            Typing....
+          </p>
         </div>
       </div>
-      <div className="w-full md:px-[3rem] px-[1rem] overflow-hidden h-[78vh] overflow-y-scroll scrollbar-thin scrollbar-track-[#FFFFFF] scrollbar-thumb-[#9BCDD2]">
-        <div className="w-full flex items-end justify-start">
-          <div className="w-full">
+      <div
+        className={`flex flex-col-reverse w-full md:px-[3rem] px-[1rem] pt-[1rem] md:pb-[4rem] pb-[2rem] bg-[#EFEAE2] overflow-hidden h-[85vh] overflow-y-scroll scrollbar-thin scrollbar-track-[#FFFFFF] scrollbar-thumb-[#9BCDD2]`}
+      >
+        <div className="w-full ">
+          <div className="w-full h-full">
             <div className="w-full py-[1rem]">
               <div className="flex items-start justify-start">
-                <div className="w-[30rem]">
-                  <p className="flex items-start justify-start bg-[#FFEEBB] px-[2rem] py-[1rem] rounded-md">
+                <div className="md:w-[30rem] w-[17rem]">
+                  <p className="flex items-start justify-start shadow-md bg-white px-[2rem] py-[1rem] rounded-md ">
                     Halo nama saya So'na tanyakan apapun dan saya pasti akan
-                    menjawabkannya. Tapi kalo nda bisa kujawab, maumi diapa ges
+                    menjawabkannya. Tapi kalo nda bisa kujawab, ya maumi diapa
+                    ges
                   </p>
                 </div>
               </div>
@@ -89,19 +95,19 @@ export default function ChatSender() {
                       : "flex items-start justify-start w-full"
                   } `}
                 >
-                  <div className="w-[30rem]">
+                  <div className="md:w-[30rem] w-[17rem]">
                     <div
                       className={`rounded-md ${
                         item.type === "questions"
                           ? "flex items-end justify-end"
-                          : "flex items-start justify-start bg-[#FFEEBB]"
+                          : "flex items-start justify-start"
                       }`}
                     >
                       <p
                         className={`rounded-md ${
                           item.type === "questions"
-                            ? "flex items-end justify-end bg-[#9BCDD2] px-[2rem] py-[1rem]"
-                            : "flex items-start justify-start bg-[#FFEEBB] px-[2rem] py-[1rem]"
+                            ? "flex items-end justify-end shadow-md bg-[#D9FDD3] px-[2rem] py-[1rem]"
+                            : "flex items-start justify-start shadow-md bg-white px-[2rem] py-[1rem]"
                         }`}
                       >
                         {item.chat}
@@ -113,66 +119,29 @@ export default function ChatSender() {
             </div>
           </div>
         </div>
-        {/* <div ref={scrollRef} /> */}
+        {/* <div ref={scrollRef} style={{ marginBottom: 100 }} /> */}
       </div>
       <div className="w-full absolute bottom-0">
-        <div className="w-full p-[1rem] flex justify-between space-x-[1rem]">
+        <div className="w-full p-[1rem] flex justify-between space-x-[1rem] bg-[#F0F2F5]">
           <input
+            onKeyDown={(event) => {
+              event.key === "Enter" && makeRequest();
+            }}
+            value={input}
             type="text"
             onChange={(e) => {
               setInput(e.target.value);
             }}
-            className="w-[90%] rounded-md px-5 shadow-md "
+            className="w-[100%] rounded-md px-5 shadow-md focus:outline-none focus:border-none focus:border-[.9px]"
           />
           <button
-            onKeyDown={(event) => {
-              if (event.key === "Enter") {
-                makeRequest();
-              }
-            }}
             onClick={makeRequest}
-            className="bg-[#9BCDD2] px-[2rem] py-[.5rem] rounded-md text-white shadow-md"
+            className="bg-[#9BCDD2] px-[1rem] py-[.5rem] rounded-md text-white shadow-md"
           >
-            Send
+            <Image src="./send.svg" width={30} height={30} alt="" />
           </button>
         </div>
       </div>
     </div>
-    // <div className="w-full bg-yellow-200 h-[100vh] relative">
-    //   <div className="relative h-full bg-gray-200">
-    // <div className="">
-    //   {arrayChat.map((item, key) => (
-    //     <div
-    //       key={key}
-    //       className={`${item.type === "questions" ? "bg-blue-200" : ""}`}
-    //     >
-    //       {item.chat}
-    //     </div>
-    //   ))}
-    // </div>
-    //   </div>
-    // <div className="w-full">
-    //   <div className="w-full p-[1rem] flex justify-between">
-    //     <input
-    //       type="text"
-    //       onChange={(e) => {
-    //         setInput(e.target.value);
-    //       }}
-    //       className="w-[90%]"
-    //     />
-    //     <button
-    //       onKeyDown={(event) => {
-    //         if (event.key === "Enter") {
-    //           makeRequest();
-    //         }
-    //       }}
-    //       onClick={makeRequest}
-    //       className="bg-yellow-200 px-[2rem] py-[.5rem]"
-    //     >
-    //       Send
-    //     </button>
-    //   </div>
-    // </div>
-    // </div>
   );
 }
