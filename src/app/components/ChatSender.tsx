@@ -60,7 +60,7 @@ export default function ChatSender() {
 
   return (
     <div className="w-full h-[100vh] relative bg-[#EFEAE2]">
-      <div className="md:px-[3rem] px-[1rem] py-[.5rem] shadow-md bg-[#F0F2F5] flex space-x-3">
+      <div className="md:px-[3rem] px-[1rem] py-[.5rem] shadow-md bg-[#F0F2F5] flex space-x-3 sticky top-0">
         <Image src="./sona.svg" width={30} height={30} alt="" />
         <div>
           <p className="mt-[.2rem]">So'na</p>
