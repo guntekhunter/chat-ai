@@ -2,8 +2,8 @@
 "use client";
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
-import { chatApi } from "../fetch/chatAPI";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ChatSender() {
   const [input, setInput] = useState<string>("");
@@ -125,28 +125,47 @@ export default function ChatSender() {
         </div>
       </div>
       <div className="w-full absolute bottom-0">
-        <div className="w-full p-[1rem] flex justify-between space-x-[1rem] bg-[#F0F2F5]">
-          <textarea
-            onKeyDown={(event) => {
-              if (event.key === "Enter" && !event.shiftKey) {
-                event.preventDefault();
-                makeRequest();
-              }
-            }}
-            placeholder="Ketik Pesan"
-            value={input}
-            rows={1}
-            onChange={(e) => {
-              setInput(e.target.value);
-            }}
-            className="w-full p-[.5rem] px-[1rem] h-[2.5rem] resize-none disabled:opacity-50 block border-0 focus:ring-0 sm:leading-6 rounded-md focus:outline-none focus:border-none scrollbar-thin scrollbar-track-[#FFFFFF] scrollbar-thumb-[#9BCDD2]"
-          />
-          <button
-            onClick={makeRequest}
-            className="bg-[#9BCDD2] px-[1rem] py-[.5rem] rounded-md text-white shadow-md"
-          >
-            <Image src="./send.svg" width={30} height={30} alt="" />
-          </button>
+        <div className="bg-[#F0F2F5]">
+          <div className="w-full p-[1rem] flex justify-between space-x-[1rem] ">
+            <textarea
+              onKeyDown={(event) => {
+                if (event.key === "Enter" && !event.shiftKey) {
+                  event.preventDefault();
+                  makeRequest();
+                }
+              }}
+              placeholder="Ketik Pesan"
+              value={input}
+              rows={1}
+              onChange={(e) => {
+                setInput(e.target.value);
+              }}
+              className="w-full p-[.5rem] px-[1rem] h-[2.5rem] resize-none disabled:opacity-50 block border-0 focus:ring-0 sm:leading-6 rounded-md focus:outline-none focus:border-none scrollbar-thin scrollbar-track-[#FFFFFF] scrollbar-thumb-[#9BCDD2]"
+            />
+            <button
+              onClick={makeRequest}
+              className="bg-[#9BCDD2] px-[1rem] py-[.5rem] rounded-md text-white shadow-md"
+            >
+              <Image src="./send.svg" width={30} height={30} alt="" />
+            </button>
+          </div>
+          <div className="w-full flex justify-around text-[.8rem] pb-[1rem]">
+            <div className="w-80%">
+              <p>
+                Developed by{" "}
+                <Link
+                  href="https://portfolio-neon-three-38.vercel.app/"
+                  className="font-bold"
+                >
+                  Guntek
+                </Link>{" "}
+                , powered by{" "}
+                <Link href="https://openai.com/" className="font-bold">
+                  OpenAI
+                </Link>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

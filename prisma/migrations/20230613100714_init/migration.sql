@@ -1,7 +1,0 @@
--- CreateTable
-CREATE TABLE "Chat" (
-    "id" TEXT NOT NULL PRIMARY KEY,
-    "chat" TEXT NOT NULL,
-    "createAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updateAt" DATETIME NOT NULL
-);
