@@ -59,7 +59,7 @@ export default function ChatSender() {
   }, [answer, questions]);
 
   return (
-    <div className="w-full h-[100vh] relative bg-[#EFEAE2]">
+    <div className="w-full h-[100vh] relative bg-[#EFEAE2] md:text-[1rem] text-[.8rem]">
       <div className="md:px-[3rem] px-[1rem] py-[.5rem] shadow-md bg-[#F0F2F5] flex space-x-3 sticky top-0">
         <Image src="./sona.svg" width={30} height={30} alt="" />
         <div>
