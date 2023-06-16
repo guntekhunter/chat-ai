@@ -158,7 +158,7 @@ export default function ChatSender() {
                   className="font-bold"
                 >
                   Guntek
-                </Link>{" "}
+                </Link>
                 , powered by{" "}
                 <Link href="https://openai.com/" className="font-bold">
                   OpenAI
