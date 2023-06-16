@@ -2,7 +2,6 @@
 "use client";
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
-import { chatApi } from "../fetch/chatAPI";
 import Image from "next/image";
 
 export default function ChatSender() {
