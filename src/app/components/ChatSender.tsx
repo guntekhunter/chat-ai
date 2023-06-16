@@ -64,7 +64,11 @@ export default function ChatSender() {
         <Image src="./sona.svg" width={30} height={30} alt="" />
         <div>
           <p className="mt-[.2rem]">So'na</p>
-          <p className={`${isLoading ? "" : "hidden"} text-[.7rem]`}>
+          <p
+            className={`${
+              isLoading ? "" : "hidden"
+            } text-[.7rem] animate-pulse`}
+          >
             Typing....
           </p>
         </div>
@@ -119,20 +123,23 @@ export default function ChatSender() {
             </div>
           </div>
         </div>
-        {/* <div ref={scrollRef} style={{ marginBottom: 100 }} /> */}
       </div>
       <div className="w-full absolute bottom-0">
         <div className="w-full p-[1rem] flex justify-between space-x-[1rem] bg-[#F0F2F5]">
-          <input
+          <textarea
             onKeyDown={(event) => {
-              event.key === "Enter" && makeRequest();
+              if (event.key === "Enter" && !event.shiftKey) {
+                event.preventDefault();
+                makeRequest();
+              }
             }}
+            placeholder="Ketik Pesan"
             value={input}
-            type="text"
+            rows={1}
             onChange={(e) => {
               setInput(e.target.value);
             }}
-            className="w-[100%] rounded-md px-5 shadow-md focus:outline-none focus:border-none focus:border-[.9px]"
+            className="w-full p-[.5rem] px-[1rem] h-[2.5rem] resize-none disabled:opacity-50 block border-0 focus:ring-0 sm:leading-6 rounded-md focus:outline-none focus:border-none scrollbar-thin scrollbar-track-[#FFFFFF] scrollbar-thumb-[#9BCDD2]"
           />
           <button
             onClick={makeRequest}
